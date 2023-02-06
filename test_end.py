@@ -80,6 +80,8 @@ EnviaMensagem(driver, ", Boa tarde")
 wait = WebDriverWait(driver = driver, timeout = 30)
 
 #Tempo inicial para o Bot Responder
+#Para não precisar injectar cookies para passar pelo QRCode do whats, Optei por deixar um tempo de espera para escanear o QRcode.
+#Uma tratativa alternativa, seria esperar algum componente em tela com o WebWaitElement que só no chat estaria disponivel.
 time.sleep(10)
 
 #Inicia Conversa
