@@ -34,14 +34,14 @@ TESTES = ["Termos Aceito....",
           "Saiu...",
           "Confirmou sair..."]
 
-#Laço para Comparar modelos
+#Função para Comparar modelos
 def ComparaModelos(Ultima_Mensagem, index):    
     if Ultima_Mensagem == (str(MODELO[index])) or Ultima_Mensagem == (str(MODELO[7])):        
         EnviaMensagem(driver, (str(RESPOSTAS[index])))      
         return True
     return False    
     
-#Laço para identificar a ultima mensagem    
+#Função para identificar a ultima mensagem    
 def PegaUltimaMensagem():
     time.sleep(1)
     try:        
@@ -52,7 +52,7 @@ def PegaUltimaMensagem():
         return None
     return texto
 
-#Laço para enviar mensagem
+#Função para enviar mensagem
 def EnviaMensagem(browser, message):
     Vai_Menssagem = WebDriverWait(browser, 20).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div/div/div[4]/div/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p')))
     Vai_Menssagem.send_keys(message)        
@@ -67,7 +67,7 @@ def IdentificaModeloEEsperaMensagem(index):
         EsperaModelo = str(PegaUltimaMensagem())        
         time.sleep(1)                     
 
-#Laço de Teste
+#Função de Testes
 def test_ValidaTeste(index):              
     result = ComparaModelos(PegaUltimaMensagem(), index)    
     print(str(TESTES[index])+str(result))            
